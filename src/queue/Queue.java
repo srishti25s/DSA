@@ -10,58 +10,53 @@ import java.util.Scanner;
  * @author Srishti Srivastava
  *
  */
-public class Queue {
+public class Queue<Item> implements QueueInterface<Item>{
 
-	String item;
-	Queue next;
+	class Node{
+		Item item;
+		Node next;
+	}
 
-	Queue front;
-	Queue rear;
-
-	int n = 0;
+	Node first, last;
+	int size;
+	
 
 	public Queue() {
-		super();
+		this.size = 0;
 	}
 
-	public Queue(String item, Queue next) {
-		super();
-		this.item = item;
-		this.next = next;
-	}
 
-	void enqueue(String item) {
-		Queue newNode = new Queue(item, null);
-		if (isEmpty()) {
-			front = newNode;
-			rear = newNode;
-		} else {
-			newNode.next = front;
-			front = newNode;
+	@Override
+	public void enqueue(Item item) {
+		Node prevLast = last;
+		last.item = item;
+		last.next = null;
+		if(prevLast == null) {
+			first = last;
+		}else {
+			prevLast.next = last;
 		}
-		n++;
+		size++;
 	}
 
-	String dequeue() {
-		if (isEmpty())
-			throw new NoSuchElementException("Queue underflow");
-		Queue pointer = front;
-		while (pointer.next.next != null) {
-			pointer = pointer.next;
-		}
-		String removed = pointer.next.item;
-		pointer.next = null;
-		rear = pointer;
-		n--;
-		return removed;
+	@Override
+	public Item dequeue() {
+		if(isEmpty()) throw new NoSuchElementException("Queue underflow");
+		Node prevFirst = first;
+		first = first.next;
+		size--;
+		if(isEmpty()) last = null;
+		return prevFirst.item;
 	}
 
-	boolean isEmpty() {
-		return (front == null);
+	@Override
+	public boolean isEmpty() {
+		return (size == 0);
 	}
 
-	int size() {
-		return n;
+	@Override
+	public int size() {
+		return size;
 	}
 
 	/**
