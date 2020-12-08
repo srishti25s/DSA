@@ -1,0 +1,10 @@
+Queue
+--------
+- supports FIFO(First In First Out)
+- has 5 basic methods:
+	i) enqueue : inserts element at the front
+	ii) dequeue : removes element from the end
+	iii) isEmpty : checks if queue is empty 
+	iv) size
+	v) peek
+	

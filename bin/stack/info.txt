@@ -1,0 +1,12 @@
+STACK
+-----
+1. Liner Data Structure
+2. Follows LIFO (Last In First Out)
+3. 4 basic operations can be performed on stack : 
+	i)   Push : Adding elements to the stack at the end of stack
+	ii)  Pop  : Removing the last added element from the stack
+	iii) Peek : Returns top element of the stack 
+	iv)  isEmpty : checks if stack is empty
+	All these operations take O(1) time.
+4. Top element is the last inserted element
+	
